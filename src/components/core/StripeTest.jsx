@@ -3,9 +3,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { toast } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
-import { apiConnector } from '../../services/apiConnector';
-import { stripeEndpoints } from '../../services/apis';
 import { testStripeConnection, testCardValidation } from '../../services/operations/stripePaymentAPI';
 
 // Hardcode the Stripe publishable key
@@ -19,7 +16,6 @@ const TestForm = () => {
   const elements = useElements();
   const [loading, setLoading] = useState(false);
   const [stripeReady, setStripeReady] = useState(false);
-  const { token } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (stripe && elements) {
@@ -108,7 +104,6 @@ const TestForm = () => {
 
 function StripeTest() {
   const [loading, setLoading] = useState(false);
-  const { token } = useSelector((state) => state.auth);
 
   const handleTestStripe = async () => {
     setLoading(true);

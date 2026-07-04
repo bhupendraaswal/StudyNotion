@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -13,8 +12,6 @@ console.log("Using Stripe key:", STRIPE_KEY);
 const stripePromise = loadStripe(STRIPE_KEY);
 
 const StripePaymentPage = () => {
-  const { user } = useSelector((state) => state.profile);
-  const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const location = useLocation();
   const [courses, setCourses] = useState([]);
